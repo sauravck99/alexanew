@@ -66,44 +66,52 @@ module.exports = new function() {
     // compile the list of actions, global actions and other menu options
     function menuResponseMap (resp, card) {
       var responseMap = {};
+      logger.info('fuction menuResponseMap :', responseMap);
 
       function addToMap (label, type, action) {
         responseMap[label] = {type: type, action: action};
+        logger.info('addToMap:addmap');
       }
 
       if (!card) {
         if (resp.globalActions && resp.globalActions.length > 0) {
           resp.globalActions.forEach(function (gAction) {
             addToMap(gAction.label, 'global', gAction);
+            logger.info('cardp');
           });
         }
         if (resp.actions && resp.actions.length > 0) {
           resp.actions.forEach(function (action) {
             addToMap(action.label, 'message', action);
+             logger.info('card2');
           });
         }
         if (resp.type === 'card' && resp.cards && resp.cards.length > 0) {
           resp.cards.forEach(function (card) {
             //special menu option to navigate to card detail
             addToMap('Card ' + card.title, 'card', {type: 'custom', value: {type: 'card', value: card}});
+            logger.info('card3');
           });
         }
       } else {
         if (card.actions && card.actions.length > 0) {
           card.actions.forEach(function (action) {
             addToMap(action.label, 'message', action);
+            logger.info('card4');
           });
         }
         //special menu option to return to main message from the card
         addToMap('Return', 'cardReturn', {type: 'custom', value: {type: 'messagePayload', value: resp}});
       }
       return responseMap;
+      logger.info('responseMap:',responseMap);
     }
 
     if (metadata.allowConfigUpdate) {
         app.put('/config', bodyParser.json(), function(req, res){
         let config = req.body;
         logger.info(config);
+          
         if (config) {
           self.setConfig(config);
         }
