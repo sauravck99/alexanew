@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "Oracle Assitant",
+            "invocationName": "oracle assistant",
             "intents": [
                 {
                     "name": "commandbot",
