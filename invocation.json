@@ -1,10 +1,10 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "info bag",
+            "invocationName": "Oracle Assitant",
             "intents": [
                 {
-                    "name": "CommandBot",
+                    "name": "commandbot",
                     "slots": [
                         {
                             "name": "command",
