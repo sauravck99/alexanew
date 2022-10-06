@@ -131,7 +131,7 @@ module.exports = new function() {
 
     var alexa_app = new alexa.app("app");
 
-    alexa_app.intent("CommandBot", {},
+    alexa_app.intent("commandbot", {},
       function (alexa_req, alexa_res) {
 
         var command = alexa_req.slot("command");
